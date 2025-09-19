@@ -57,8 +57,9 @@ class ARSceneManager {
                 await navigator.mediaDevices.getUserMedia({ 
                     video: { 
                         facingMode: 'environment',
-                        width: { ideal: 1280 },
-                        height: { ideal: 960 }
+                        width: { ideal: 1280, min: 640, max: 1920 },
+                        height: { ideal: 960, min: 480, max: 1080 },
+                        aspectRatio: { ideal: 4/3 }
                     } 
                 });
                 console.log("Camera permission granted");
