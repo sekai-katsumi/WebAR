@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AR Video | ガイド</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+</head>
+<body class="scrollable-page">
+    <header class="fixed-header">
+        <div class="header-content">
+            <div class="header-logo">
+                <a href="./index.html">LOGO</a>
+            </div>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="./guide.html">使い方</a></li>
+                    <li><a href="./benefit.html">特典</a></li>
+                    <li><a href="./infomation.html">動作環境</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-debug">
+            <p id="status-text">AR動画を読み込む手順</p>
+        </div>
+    </header>
+
+    <main class="tutorial-container">
+        <section class="hero-section">
+            <h1>使い方ガイド</h1>
+            <p>AR Videoの使い方を解説します。<br>初めての方でも簡単にAR体験をお楽しみいただけます。</p>
+        </section>
+
+        <section class="quick-start">
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>マーカーを準備</h3>
+                        <p>購入した商品ボックスの画像マーカーの表面をカメラで読み込めるように向ける。</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>カメラを許可</h3>
+                        <p>ブラウザがカメラアクセスを求めた場合は「許可」を選択してください。</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>マーカーにカメラを向ける</h3>
+                        <p>印刷したマーカーにスマートフォンのカメラを向けると、動画が再生されます。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br/>
+        <section class="tutorial-section" data-section="1">
+
+            <h2>マーカー認識を最適化する</h2>
+            
+            <p>AR体験の品質は、マーカーの認識精度に大きく依存します。以下のポイントを押さえることで、より安定したAR体験を楽しめます。</p>
+
+            <h3>最適な距離を保つ</h3>
+            <div class="distance-guide">
+                <div class="distance-item bad">
+                    <h4>近すぎる</h4><br/>
+                    <p>10cm未満<br>マーカーが画面に収まらない</p>
+                </div>
+                <div class="distance-item good">
+                    <h4>最適</h4><br/>
+                    <p>15-30cm<br>マーカー全体が画面に収まる</p>
+                </div>
+                <div class="distance-item bad">
+                    <h4>遠すぎる</h4><br/>
+                    <p>50cm以上<br>マーカーが小さすぎて認識困難</p>
+                </div>
+            </div>
+
+            <div class="tips-grid">
+                <div class="tip-card success">
+                    <h4>推奨環境</h4>
+                    <p>明るい室内または屋外の日陰で使用すると、最も安定した認識が可能です。蛍光灯やLED照明の下でも良好に動作します。</p>
+                </div>
+                <div class="tip-card warning">
+                    <h4>注意点</h4>
+                    <p>直射日光の下や暗い場所では認識精度が低下する場合があります。また、マーカーが汚れていたり、折れていると認識されません。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tutorial-section" data-section="2">
+            <h2>認識精度を向上させるコツ</h2>
+            
+            <h3>マーカーの状態</h3>
+            <div class="tips-grid">
+                <div class="tip-card success">
+                    <h4>良い状態</h4>
+                    <p>平らに置かれた、汚れのないマーカー。A4サイズで印刷されたものが理想的です。</p>
+                </div>
+                <div class="tip-card error">
+                    <h4>悪い状態</h4>
+                    <p>曲がっていたり、影がかかっていたり、反射している状態では認識が困難です。</p>
+                </div>
+            </div>
+
+            <h3>カメラの角度</h3>
+            <p>マーカーに対してカメラを正面から向けることが重要です。極端な角度からでは認識されません。</p>
+
+        </section>
+
+        <section class="tutorial-section" data-section="3">
+            <h2>トラブルシューティング</h2>
+            
+            <div class="troubleshooting">
+                <h4>よくある問題と解決方法</h4>
+                
+                <div class="troubleshooting-item">
+                    <div class="problem">問題: マーカーが認識されない</div>
+                    <div class="solution">
+                        <strong>解決策:</strong><br>
+                        • マーカーが画面全体に収まっているか確認<br>
+                        • 十分な明るさがあるか確認<br>
+                        • マーカーが平らに置かれているか確認<br>
+                        • カメラレンズが汚れていないか確認
+                    </div>
+                </div>
+                
+                <div class="troubleshooting-item">
+                    <div class="problem">問題: 動画が再生されない</div>
+                    <div class="solution">
+                        <strong>解決策:</strong><br>
+                        • ブラウザを最新版にアップデート<br>
+                        • ページを再読み込み<br>
+                        • 他のタブを閉じてメモリを確保<br>
+                        • Wi-Fi接続を確認
+                    </div>
+                </div>
+                
+                <div class="troubleshooting-item">
+                    <div class="problem">問題: 音声が聞こえない</div>
+                    <div class="solution">
+                        <strong>解決策:</strong><br>
+                        • デバイスの音量を確認<br>
+                        • ブラウザの音声設定を確認<br>
+                        • イヤホン・スピーカーの接続を確認<br>
+                        • 画面をタップして音声を有効化
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tutorial-section" data-section="4">
+            <h2>活用のヒント</h2>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4>マルチプラットフォーム</h4>
+                    <p>スマートフォン、タブレット、デスクトップPCのどれでもご利用いただけます。タッチ操作にも対応しています。</p>
+                </div>
+                <div class="tip-card">
+                    <h4>繰り返し視聴</h4>
+                    <p>動画は自動的にループ再生されます。マーカーから離れると一時停止し、再度認識されると再開します。</p>
+                </div>
+                <div class="tip-card">
+                    <h4>共有体験</h4>
+                    <p>複数の人で同時にAR体験を楽しむことができます。それぞれのデバイスで同じマーカーを認識させてください。</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="navigation-buttons">
+            <a href="./index.html" class="nav-btn secondary">
+                ← マーカーを読み込む
+            </a>
+            <a href="./benefit.html" class="nav-btn">
+                特典映像 →
+            </a>
+        </div>
+    </main>
+
+</body>
+</html>

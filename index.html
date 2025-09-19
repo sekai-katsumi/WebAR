@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AR Video | TOP</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- 事前ロード -->
+    <link rel="preload" as="video" href="./assets/video-01.mp4" type="video/mp4">
+    <link rel="preload" as="video" href="./assets/video-02.mp4" type="video/mp4">
+    <link rel="preload" as="video" href="./assets/video-03.mp4" type="video/mp4">
+    <link rel="preload" as="fetch" href="./assets/marker-ptn01.patt" crossorigin="anonymous">
+    <link rel="preload" as="fetch" href="./assets/marker-ptn02.patt" crossorigin="anonymous">
+    <link rel="preload" as="fetch" href="./assets/marker-ptn03.patt" crossorigin="anonymous">
+
+    <!-- ライブラリ -->
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+    <!-- JavaScript -->
+    <script src="./js/videoPlayer.js" defer></script>
+    <script src="./js/videoPlane.js" defer></script>
+    <script src="./js/arMarker.js" defer></script>
+    <script src="./js/loadingManager.js" defer></script>
+    <script src="./js/statusDisplay.js" defer></script>
+    <script src="./js/arSceneManager.js" defer></script>
+
+    <!-- ファビコン -->
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+</head>
+<body>
+    <header class="fixed-header">
+        <div class="header-content">
+            <div class="header-logo">
+                <a href="./index.html">LOGO</a>
+            </div>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="./guide.html">使い方</a></li>
+                    <li><a href="./benefit.html">特典</a></li>
+                    <li><a href="./infomation.html">動作環境</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-debug">
+            <p id="status-text">ステータス: 待機中</p>
+        </div>
+    </header>
+
+    <main>
+        <div id="interaction-overlay">
+            <div class="interaction-prompt">
+                <p>カメラへのアクセスとAR体験を開始するには、<br/>
+                    "AR体験を開始" をタップ！<br>
+                    <br>【利用方法】<br>
+                    1. マーカーから15-30cm 離してカメラを向ける<br>
+                    2. マーカーが認識されると動画が再生されます<br>
+                    3. 再生できない時は、「特典」ページを見てね
+                </p>
+                <button id="start-ar-btn">AR体験を開始</button>
+            </div>
+        </div>
+
+        <div id="loading">
+            <div class="spinner"></div>
+            <div id="loading-percentage">Loading: 0%</div>
+        </div>
+    </main>
+
+    <a-scene
+        id="ar-scene"
+        embedded
+        arjs="
+        sourceType: webcam;
+        debugUIEnabled: false;
+        multiMarker: true;
+        independentMarkers: true;
+        sourceWidth: 1280;
+        sourceHeight: 960;
+        displayWidth: 1280;
+        displayHeight: 960;
+        maxDetectionRate: 30;
+        detectionMode: mono_and_matrix;
+        matrixCodeType: 3x3;
+        trackingMethod: best;"
+        style="width: 100vw; height: 100vh; overflow: hidden; display: none;"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false"
+    >
+        <a-assets>
+            <video id="video-01" 
+                src="./assets/video-01.mp4" 
+                loop 
+                muted 
+                playsinline 
+                preload="metadata"
+                crossorigin="anonymous"
+                webkit-playsinline="true"></video>
+            <video id="video-02" 
+                src="./assets/video-02.mp4" 
+                loop 
+                muted 
+                playsinline 
+                preload="metadata"
+                crossorigin="anonymous"
+                webkit-playsinline="true"></video>
+            <video id="video-03" 
+                src="./assets/video-03.mp4" 
+                loop 
+                muted 
+                playsinline 
+                preload="metadata"
+                crossorigin="anonymous"
+                webkit-playsinline="true"></video>
+        </a-assets>
+
+        <a-marker type="pattern" url="./assets/marker-ptn01.patt" id="marker-01" 
+                patternRatio="0.5" markerhandler>
+            <a-plane id="plane-01" 
+                        position="0 0 0" 
+                        rotation="-90 0 0" 
+                        width="2" 
+                        height="1.125"
+                        material="src: #video-01; shader: flat; transparent: true; opacity: 0"
+                        visible="true"></a-plane>
+        </a-marker>
+
+        <a-marker type="pattern" url="./assets/marker-ptn02.patt" id="marker-02" 
+                patternRatio="0.5" markerhandler>
+            <a-plane id="plane-02" 
+                        position="0 0 0" 
+                        rotation="-90 0 0" 
+                        width="2" 
+                        height="1.125"
+                        material="src: #video-02; shader: flat; transparent: true; opacity: 0"
+                        visible="false"></a-plane>
+        </a-marker>
+
+        <a-marker type="pattern" url="./assets/marker-ptn03.patt" id="marker-03" 
+                patternRatio="0.5" markerhandler>
+            <a-plane id="plane-03" 
+                        position="0 0 0" 
+                        rotation="-90 0 0" 
+                        width="2" 
+                        height="1.125"
+                        material="src: #video-03; shader: flat; transparent: true; opacity: 0"
+                        visible="false"></a-plane>
+        </a-marker>
+
+        <a-entity camera></a-entity>
+    </a-scene>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        console.log("DOM loaded, initializing AR scene...");
+        
+        const sceneManager = new ARSceneManager({
+            loadingSelector: "#loading",
+            statusSelector: "#status-text",
+            interactionOverlaySelector: "#interaction-overlay"
+        });
+
+        // グローバルアクセス用（デバッグ目的）
+        window.arSceneManager = sceneManager;
+
+        // ユーザーインタラクションでAR開始
+        const startBtn = document.getElementById("start-ar-btn");
+        startBtn.addEventListener("click", async () => {
+            console.log("Start AR button clicked");
+            try {
+                await sceneManager.startAR();
+            } catch (error) {
+                console.error("Failed to start AR:", error);
+            }
+        });
+
+        // A-Frameシーンのエラーハンドリング
+        const arScene = document.getElementById("ar-scene");
+        arScene.addEventListener("enter-vr", () => {
+            console.log("AR scene entered");
+        });
+
+        arScene.addEventListener("exit-vr", () => {
+            console.log("AR scene exited");
+        });
+
+        // デバッグ用キーボードショートカット（デスクトップのみ）
+        document.addEventListener("keydown", (event) => {
+            if (!sceneManager.isARReady) return;
+            
+            switch(event.key) {
+                case 'd': // デバッグ情報表示
+                    sceneManager.debugMarkerPositions();
+                    break;
+                case 'r': // 位置リセット
+                    // sceneManager.resetAllPositions();
+                    console.log("Position reset disabled in single marker mode");
+                    break;
+                case 'c': // 🆕 現在のアクティブマーカー表示
+                    console.log("Current active marker:", sceneManager.currentActiveMarker);
+                    break;
+                case 's': // 🆕 単一表示モードの状態確認
+                    console.log("Single marker mode status:", {
+                        maxSimultaneous: sceneManager.maxSimultaneousMarkers,
+                        currentActive: sceneManager.currentActiveMarker,
+                        conflictDetection: sceneManager.conflictDetectionEnabled
+                    });
+                    break;
+                // case '1': // マーカー01の位置調整（無効化）
+                // case '2': // マーカー02の位置調整（無効化）
+                // case '3': // マーカー03の位置調整（無効化）
+            }
+        });
+
+        console.log("Event listeners attached with single marker debug controls");
+        console.log("Debug keys: d=debug info, c=current marker, s=single mode status");
+    });
+    </script>
+</body>
+</html>

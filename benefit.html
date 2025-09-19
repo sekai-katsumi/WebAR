@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AR Video | 特典</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- プリロード: 動画・マーカー -->
+    <link rel="preload" as="video" href="./assets/video-01.mp4" type="video/mp4">
+    <link rel="preload" as="video" href="./assets/video-02.mp4" type="video/mp4">
+    <link rel="preload" as="video" href="./assets/video-03.mp4" type="video/mp4">
+
+    <!-- アプリJS -->
+    <script src="./js/alternativeVideo.js" defer></script>
+
+    <!-- ファビコン -->
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+</head>
+<body class="scrollable-page">
+    <!-- ヘッダー -->
+    <header class="fixed-header">
+        <div class="header-content">
+            <div class="header-logo">
+                <a href="./index.html">LOGO</a>
+            </div>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="./guide.html">使い方</a></li>
+                    <li><a href="./benefit.html">特典</a></li>
+                    <li><a href="./infomation.html">サイト情報</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-debug">
+            <p id="status-text">特典映像ページ</p>
+        </div>
+    </header>
+
+    <!-- メイン -->
+    <main class="benefit-container">
+
+        <!-- 動画プレイヤー領域 -->
+        <section class="video-section-wrapper">
+            <div class="video-container">
+                <video id="videoPlayer" controls></video>
+                <!-- クロマキー用のCanvasはJavaScriptで動的に追加される -->
+                <div class="video-overlay">
+                    <div class="play-icon">▶</div>
+                    <p>コードを入力すると動画が表示されます</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 番号入力フォーム -->
+        <section class="input-section-wrapper">
+            <div class="input-card">
+                <h2>4桁のコードを入力</h2>
+                <p class="input-description">商品ボックスの裏面に印刷されている4桁のコードを入力してください</p>
+                
+                <div class="input-group">
+                    <input type="text" id="videoCode" maxlength="4" placeholder="例: 0001">
+                    <button id="playBtn">再生</button>
+                </div>
+                
+                <div id="error-msg" class="error-message"></div>
+                
+                <div class="test-codes">
+                    <h3>テスト用コード</h3>
+                    <div class="code-list">
+                        <div class="code-item">
+                            <span class="code">1111</span>
+                            <span class="description">video01</span>
+                        </div>
+                        <div class="code-item">
+                            <span class="code">2222</span>
+                            <span class="description">video02</span>
+                        </div>
+                        <div class="code-item">
+                            <span class="code">3333</span>
+                            <span class="description">video03</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 使い方ガイド -->
+        <section class="guide-section">
+            <div class="guide-card">
+                <h3>使い方のヒント</h3>
+                <div class="tips-grid">
+                    <div class="tip-item">
+                        <div class="tip-icon">📦</div>
+                        <div class="tip-content">
+                            <h4>コードの場所</h4>
+                            <p>商品ボックスの裏面または側面に印刷されています</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-icon">🔢</div>
+                        <div class="tip-content">
+                            <h4>入力方法</h4>
+                            <p>4桁の数字をそのまま入力してください（ハイフンなどは不要）</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ナビゲーションボタン -->
+        <div class="navigation-buttons">
+            <a href="./index.html" class="nav-btn secondary">
+                ← AR体験に戻る
+            </a>
+            <a href="./guide.html" class="nav-btn">
+                使い方ガイド →
+            </a>
+        </div>
+    </main>
+</body>
+</html>

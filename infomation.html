@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AR Video | 動作環境</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+</head>
+<body class="scrollable-page">
+    <header class="fixed-header">
+        <div class="header-content">
+            <div class="header-logo">
+                <a href="./index.html">LOGO</a>
+            </div>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="./guide.html">使い方</a></li>
+                    <li><a href="./benefit.html">特典</a></li>
+                    <li><a href="./infomation.html">動作環境</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-debug">
+            <p id="status-text">サイト情報を表示</p>
+        </div>
+    </header>
+
+    <main class="requirements-container">
+        <section class="requirements-section">
+            <h2>対応ブラウザ</h2>
+            <p>WebRTC（カメラアクセス）とWebGLに対応したモダンブラウザが必要です。</p>
+            
+            <div class="browser-grid">
+                <div class="browser-card supported">
+                    <span class="status-badge supported">推奨</span>
+                    <h3>Google Chrome</h3>
+                    <div class="version-info">バージョン 88 以降</div>
+                    <p>最も安定した動作が期待できます。デスクトップ・モバイル両対応。</p>
+                </div>
+                
+                <div class="browser-card limited">
+                    <span class="status-badge limited">制限あり</span>
+                    <h3>Safari</h3>
+                    <div class="version-info">バージョン 14 以降</div>
+                    <p>iOS/macOSで利用可能。一部機能に制限があります。</p>
+                </div>
+
+                
+                <div class="browser-card supported">
+                    <span class="status-badge supported">推奨</span>
+                    <h3>Microsoft Edge</h3>
+                    <div class="version-info">バージョン 88 以降</div>
+                    <p>Chromiumベースの新しいEdge。Windows環境で推奨。</p>
+                </div>
+
+                <div class="browser-card limited">
+                    <span class="status-badge limited">制限あり</span>
+                    <h3>Firefox</h3>
+                    <div class="version-info">バージョン 85 以降</div>
+                    <p>基本機能は動作しますが、パフォーマンスに影響する場合がります。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="requirements-section">
+            <h2>デバイス要件</h2>
+            
+            <div class="device-specs">
+                <div class="spec-card">
+                    <h4>📱 スマートフォン</h4>
+                    <ul class="spec-list">
+                        <li><strong>iOS:</strong> 12.0 以降</li>
+                        <li><strong>Android:</strong> 8.0 以降</li>
+                        <li><strong>RAM:</strong> 3GB 以上推奨</li>
+                        <li><strong>カメラ:</strong> 背面カメラ必須</li>
+                        <li><strong>ストレージ:</strong> 100MB 以上の空き容量</li>
+                    </ul>
+                </div>
+                
+                <div class="spec-card">
+                    <h4>💻 デスクトップ・ノートPC</h4>
+                    <ul class="spec-list">
+                        <li><strong>OS:</strong> Windows 10/11, macOS 10.15以降</li>
+                        <li><strong>RAM:</strong> 4GB 以上推奨</li>
+                        <li><strong>GPU:</strong> WebGL対応グラフィックカード</li>
+                        <li><strong>カメラ:</strong> Webカメラ必須</li>
+                        <li><strong>ネットワーク:</strong> 安定したインターネット接続</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="requirements-section">
+            <h2>必要な権限設定</h2>
+            
+            <div class="permission-guide">
+                <h4>📸 カメラアクセス許可の手順</h4>
+                <div class="permission-steps">
+                    <div class="permission-step">
+                        <strong>AR Videoページにアクセス</strong><br>
+                        ブラウザでAR Videoのページを開きます。
+                    </div>
+                    <div class="permission-step">
+                        <strong>カメラ許可ダイアログの確認</strong><br>
+                        「カメラへのアクセスを許可しますか？」というメッセージが表示されます。
+                    </div>
+                    <div class="permission-step">
+                        <strong>「許可」をクリック</strong><br>
+                        「許可」または「Allow」ボタンをクリックしてカメラアクセスを有効にします。
+                    </div>
+                    <div class="permission-step">
+                        <strong>権限の確認</strong><br>
+                        アドレスバーにカメラアイコンが表示され、AR体験が開始できます。
+                    </div>
+                </div>
+            </div>
+            
+            <p><strong>注意:</strong> 「ブロック」を選択した場合は、ブラウザの設定からカメラ権限を手動で有効にする必要があります。</p>
+        </section>
+
+        <section class="requirements-section">
+            <h2>パフォーマンス要件</h2>
+            
+            <div class="performance-info">
+                <h4>📊 推奨環境での性能</h4>
+                <ul class="spec-list">
+                    <li><strong>フレームレート:</strong> 30fps以上を維持</li>
+                    <li><strong>マーカー認識:</strong> 0.5秒以内に検出</li>
+                    <li><strong>動画再生:</strong> 1080p対応</li>
+                    <li><strong>遅延:</strong> カメラ映像の遅延 100ms以下</li>
+                </ul>
+            </div>
+            
+            <h3>🛠 パフォーマンス向上のヒント</h3>
+            <ul class="spec-list" style="margin-left: 0;">
+                <li>他のタブやアプリケーションを閉じる</li>
+                <li>安定したWi-Fi接続を使用する</li>
+                <li>デバイスを再起動して空きメモリを確保する</li>
+                <li>ブラウザを最新版にアップデートする</li>
+                <li>ハードウェアアクセラレーションを有効にする</li>
+            </ul>
+        </section>
+
+        <section class="requirements-section">
+            <h2>トラブルシューティング</h2>
+            
+            <h3>動作しない場合の確認項目</h3>
+            <div style="background: #f3f4f6; padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                <ol style="margin: 0; padding-left: 1.5rem; color: #374151;">
+                    <li>ブラウザがサポート対象か確認</li>
+                    <li>JavaScriptが有効になっているか確認</li>
+                    <li>カメラ権限が許可されているか確認</li>
+                    <li>インターネット接続が安定しているか確認</li>
+                    <li>ページを再読み込みして再試行</li>
+                </ol>
+            </div>
+            
+            <p>上記を試しても解決しない場合でも、<a href="./benefit.html" style="color: #4f46e5;">特典ページ</a>で動画をご視聴いただけます。</p>
+        </section>
+
+        <div class="navigation-buttons">
+            <a href="./benefit.html" class="nav-btn secondary">
+                ← 特典動画
+            </a>
+            <a href="./guide.html" class="nav-btn">
+                詳しい使い方 →
+            </a>
+        </div>
+    </main>
+
+</body>
+</html>
